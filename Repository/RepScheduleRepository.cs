@@ -1,48 +1,21 @@
 ﻿using MedicalRepresentativeScheduleMicroservice.Models;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace MedicalRepresentativeScheduleMicroservice.Repository
 {
     public class RepScheduleRepository : IRepScheduleRepository
     {
-        public static List<RepSchedule> ls = new List<RepSchedule>();
-        //{
-        //    new RepSchedule
-        //    {
-        //       RepName="R1",
-        //       DoctorName="D1",
-        //       TreatingAilment="Orthopaedics",
-        //       Medicine=new List<string>
-        //       {
-        //          "Orthoherb", "Cholecalciferol"
-        //       },
-        //       MeetingSlot="1 pm to 2 pm",
-        //       DateOfMeeting=new DateTime(2020,05,24),
-        //       DoctorContactNumber=22244469
+       
+           
+      
 
-
-        //    },
-        //    new RepSchedule
-        //    {
-        //       RepName="R2",
-        //       DoctorName="D2",
-        //       TreatingAilment="General",
-        //       Medicine=new List<string>
-        //       {
-        //          "Gaviscon", "Dolo-650"
-        //       },
-        //       MeetingSlot="2 pm to 3 pm",
-        //       DateOfMeeting=new DateTime(2020,05,25),
-        //       DoctorContactNumber=22244470
-
-
-        //    }
-        //};
-
-        public static List<Doctor> ls1 = new List<Doctor>
+        public static List<Doctor> lsdoc = new List<Doctor>
         {
             new Doctor
             {
@@ -85,10 +58,45 @@ namespace MedicalRepresentativeScheduleMicroservice.Repository
 
             }
         };
+       
 
-        public IEnumerable<RepSchedule> Get()
+        Uri baseaddress = new Uri("https://localhost:44322/api/MedicineStock");
+        HttpClient client;
+        public RepScheduleRepository()
         {
-            return ls.ToList();
+            client = new HttpClient();
+            client.BaseAddress = baseaddress;
+        }
+
+       
+           
+        
+        
+        /// <summary>
+         /// This function will fetch the MedicineStock by calling MedicineStock microservice
+         /// </summary>
+         /// <returns></returns>
+              
+        public IEnumerable<MedicineStock> Get()
+        {
+            try
+            {
+                List<MedicineStock> ls = new List<MedicineStock>();
+                HttpResponseMessage response = client.GetAsync(client.BaseAddress).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = response.Content.ReadAsStringAsync().Result;
+                    ls = JsonConvert.DeserializeObject<List<MedicineStock>>(data);
+                    return ls;
+                }
+                return null;
+            }
+            catch(Exception)
+            {
+                
+                return null;
+            }
+           
         }
 
        

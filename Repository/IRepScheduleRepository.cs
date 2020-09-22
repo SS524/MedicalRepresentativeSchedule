@@ -8,7 +8,7 @@ namespace MedicalRepresentativeScheduleMicroservice.Repository
 {
    public interface IRepScheduleRepository
     {
-        public IEnumerable<RepSchedule> Get();
+        public IEnumerable<MedicineStock> Get();
 
     }
 }

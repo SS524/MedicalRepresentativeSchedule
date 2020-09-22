@@ -8,11 +8,11 @@ namespace MedicalRepresentativeScheduleMicroservice.Models
     public class RepSchedule
     {
         public string RepName { get; set; }
-        public string DoctorName { get; set; }
-      //  public string TreatingAilment { get; set; }
-     //   public List<string> Medicine { get; set; }
+        public Doctor Doctor { get; set; }
+     
+        public IEnumerable<string> Medicine { get; set; }
         public string MeetingSlot { get; set; }
         public DateTime DateOfMeeting { get; set; }
-        public long DoctorContactNumber { get; set; }
+       
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MedicalRepresentativeScheduleMicroservice.Models;
+using MedicalRepresentativeScheduleMicroservice.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,34 +15,31 @@ namespace MedicalRepresentativeScheduleMicroservice.Controllers
     {
         // GET: api/MedicalRepresentative
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<MedicalRepresentative> Get()
         {
-            return new string[] { "value1", "value2" };
+            return MedicalRepresentativeRepository.ls;
         }
 
         // GET: api/MedicalRepresentative/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //[HttpGet("{id}")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST: api/MedicalRepresentative
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
-        // PUT: api/MedicalRepresentative/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //// PUT: api/MedicalRepresentative/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }
