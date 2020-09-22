@@ -106,6 +106,13 @@ E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\bin\Debug\netcoreapp3.1
 E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\obj\Debug\netcoreapp3.1\MedicalRepresentativeScheduleMicroservice.csproj.CoreCompileInputs.cache
 E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\obj\Debug\netcoreapp3.1\MedicalRepresentativeScheduleMicroservice.MvcApplicationPartsAssemblyInfo.cs
 E:\vs com 2019\MedicalRepresentativeScheduleMicroservice\obj\Debug\netcoreapp3.1\MedicalRepresentativeScheduleMicroservice.MvcApplicationPartsAssemblyInfo.cache

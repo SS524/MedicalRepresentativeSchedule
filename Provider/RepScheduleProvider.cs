@@ -13,18 +13,19 @@ namespace MedicalRepresentativeScheduleMicroservice.Provider
         {
             con = _con;
         }
-        public static List<RepSchedule> lsrep = new List<RepSchedule>();
+        public  List<RepSchedule> lsrep = new List<RepSchedule>();
         /// <summary>
         /// This is the function where we are creating the schedule for medical representative with the doctor.
         /// By giving date it will create schedule for 5 days starting from the start date ,excluding Sunday.
         /// The function will not create any schedule on Sunday.
         /// </summary>
         /// <param name="date"></param>
+        IEnumerable<MedicineStock> stock;
         public void CreateSchedule(DateTime date)
         {
             try
             {
-                IEnumerable<MedicineStock> stock = con.Get();
+                
                 int count = 0;
                 while (count != 5)
                 {
@@ -49,8 +50,9 @@ namespace MedicalRepresentativeScheduleMicroservice.Provider
 
             }
         }
-        public IEnumerable<RepSchedule> GetByDate(DateTime date)
+        public IEnumerable<RepSchedule> GetByDate(DateTime date,string token)
         {
+            stock = con.Get(token);
             CreateSchedule(date);
             //IEnumerable<RepSchedule> rep = con.Get().Where(t => t.DateOfMeeting == date);
             // return rep;

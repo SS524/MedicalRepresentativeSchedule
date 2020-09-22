@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MedicalRepresentativeScheduleMicroservice.Provider;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalRepresentativeScheduleMicroservice.Controllers
-{
+{    
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class RepScheduleController : ControllerBase
     {
         readonly log4net.ILog _log4net;
@@ -31,14 +33,16 @@ namespace MedicalRepresentativeScheduleMicroservice.Controllers
         // GET: api/RepSchedule/5
         [HttpGet("{date}")]
         public IActionResult Get(DateTime date)
-        {     
+        {
+            
             try
             {
                 if (date != null)
                 {
+                    string token = HttpContext.Request.Headers["Authorization"].FirstOrDefault().Split(" ")[1];
                     _log4net.Info(" Http GET request");
 
-                    return Ok(_con.GetByDate(date));
+                    return Ok(_con.GetByDate(date,token));
                 }
                 else
                 {

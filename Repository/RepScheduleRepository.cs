@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Net.Http.Headers;
 
 namespace MedicalRepresentativeScheduleMicroservice.Repository
 {
@@ -77,11 +78,12 @@ namespace MedicalRepresentativeScheduleMicroservice.Repository
          /// </summary>
          /// <returns></returns>
               
-        public IEnumerable<MedicineStock> Get()
+        public IEnumerable<MedicineStock> Get(string token)
         {
             try
             {
                 List<MedicineStock> ls = new List<MedicineStock>();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage response = client.GetAsync(client.BaseAddress).Result;
                 if (response.IsSuccessStatusCode)
                 {
