@@ -8,9 +8,11 @@ namespace MedicalRepresentativeScheduleMicroservice.Provider
 {
     public class RepScheduleProvider
     {
+        readonly log4net.ILog _log4net;
         RepScheduleRepository con;
         public RepScheduleProvider(RepScheduleRepository _con)
         {
+            _log4net = log4net.LogManager.GetLogger(typeof(RepScheduleProvider));
             con = _con;
         }
         public  List<RepSchedule> lsrep = new List<RepSchedule>();
@@ -24,8 +26,7 @@ namespace MedicalRepresentativeScheduleMicroservice.Provider
         public void CreateSchedule(DateTime date)
         {
             try
-            {
-                
+            {               
                 int count = 0;
                 while (count != 5)
                 {
@@ -43,20 +44,39 @@ namespace MedicalRepresentativeScheduleMicroservice.Provider
                         lsrep.Add(rp);
                     }
                     date = date.AddDays(1);
-                }
+                 }
+                if (lsrep.Count == 0)
+                    _log4net.Info(nameof(RepScheduleProvider) + "RepSchedule list is null");
+                else 
+                    _log4net.Info(nameof(RepScheduleProvider) + "Succesfully schedule created");
             }
-            catch(Exception)
+            catch(Exception e)
             {
-
+                _log4net.Error(nameof(RepScheduleProvider) + "Exception"+e.Message);
             }
         }
+
+        /// <summary>
+        /// This method is being called in the controller 
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public IEnumerable<RepSchedule> GetByDate(DateTime date,string token)
         {
-            stock = con.Get(token);
-            CreateSchedule(date);
-            //IEnumerable<RepSchedule> rep = con.Get().Where(t => t.DateOfMeeting == date);
-            // return rep;
-            return lsrep;
+            try
+            {
+                stock = con.Get(token);
+                CreateSchedule(date);
+               
+                _log4net.Info(nameof(RepScheduleProvider) + "GetByDate called");
+                return lsrep;
+            }
+            catch(Exception e)
+            {
+                _log4net.Error(nameof(RepScheduleProvider) + "Exception" + e.Message);
+                throw e;
+            }
         }
     }
 }

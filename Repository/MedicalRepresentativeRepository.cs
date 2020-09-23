@@ -15,26 +15,19 @@ namespace MedicalRepresentativeScheduleMicroservice.Repository
              Name="Prithwiman",
              Email="prithwi@test.com",
              Password="123er"
-
-
             },
             new MedicalRepresentative
             {
              Name="Shubham",
              Email="shubham@test.com",
              Password="xyz55"
-
-
             },
              new MedicalRepresentative
             {
              Name="Arghya",
              Email="arghya@test.com",
              Password="183er"
-
-
             }
         };
-
     }
 }

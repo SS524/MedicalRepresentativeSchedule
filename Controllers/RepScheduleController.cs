@@ -23,15 +23,9 @@ namespace MedicalRepresentativeScheduleMicroservice.Controllers
 
             _con = provider;
         }
-        // GET: api/RepSchedule
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
+    
 
-        // GET: api/RepSchedule/5
-        [HttpGet("{date}")]
+          [HttpGet("{date}")]
         public IActionResult Get(DateTime date)
         {
             
@@ -40,35 +34,22 @@ namespace MedicalRepresentativeScheduleMicroservice.Controllers
                 if (date != null)
                 {
                     string token = HttpContext.Request.Headers["Authorization"].FirstOrDefault().Split(" ")[1];
-                    _log4net.Info(" Http GET request");
+                    _log4net.Info(nameof(RepScheduleController)+" Http GET request using Date");
 
                     return Ok(_con.GetByDate(date,token));
                 }
                 else
                 {
+                    _log4net.Info(nameof(RepScheduleController)+"Date is null");
                     return BadRequest("Null Parameter can not  be expected");
                 }
             }
-            catch(Exception)
-            {
-                _log4net.Error(" Internal Error Occured");
-                return BadRequest();
+            catch(Exception e)
+            {    
+                _log4net.Error(nameof(RepScheduleController)+"Exception"+e.Message);
+                return StatusCode(500);
             }
         }
 
-        // POST: api/RepSchedule
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
-
-        //// PUT: api/RepSchedule/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-       
-      
     }
 }
